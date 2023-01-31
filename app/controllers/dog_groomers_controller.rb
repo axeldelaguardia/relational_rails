@@ -1,6 +1,6 @@
 class DogGroomersController < ApplicationController
 	def index
-		@groomers = ['1', '2', '3']
+		@doggroomers = DogGroomer.all
 	end
 
 	def new

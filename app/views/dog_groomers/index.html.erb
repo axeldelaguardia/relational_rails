@@ -1,5 +1,8 @@
 <h1>All Groomers</h1>
 
-<% @groomers.each do |groomer| %>
-	<h3><%= groomer %>
+<% @doggroomers.each do |groomer| %>
+	<h3><%= groomer.name %></h3>
+	<p>Master Groomer: <%= groomer.master_groomer %></p>
+	<p>Salon: <%= groomer.salon %></p>
+	<p>Groomer Rating: <%= groomer.rating %></p>
 <% end %>
