@@ -5,6 +5,8 @@ class CreateDogGroomer < ActiveRecord::Migration[5.2]
       t.boolean :master_groomer
       t.string :salon
       t.integer :rating
+			
+			t.timestamps
     end
   end
 end

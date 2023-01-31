@@ -8,14 +8,14 @@ class DogGroomersController < ApplicationController
 	end
 
 	def create
-		groomer = Groomer.new({
-			name: params[:groomer][:name]
-			master_groomer: params[:groomer][:master_groomer]
-			salon: params[:groomer][:salon]
+		groomer = DogGroomer.new({
+			name: params[:groomer][:name],
+			master_groomer: params[:groomer][:master_groomer],
+			salon: params[:groomer][:salon],
 			rating: params[:groomer][:rating]
 		})
 
-		task.save
+		DogGroomer.save
 
 		redirect_to '/dog_groomer'
 	end
