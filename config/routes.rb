@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 	get '/dog_groomers', to: 'dog_groomers#index'
 	get '/dog_groomers/new', to: 'dog_groomers#new'
 	post '/dog_groomers', to: 'dog_groomers#create'
+	get '/dog_groomers/:id', to: 'dog_groomers#show'
 end

@@ -1,6 +1,6 @@
 class DogGroomersController < ApplicationController
 	def index
-		@doggroomers = DogGroomer.all
+		@groomers = DogGroomer.all
 	end
 
 	def new
@@ -15,8 +15,12 @@ class DogGroomersController < ApplicationController
 			rating: params[:groomer][:rating]
 		})
 
-		DogGroomer.save
+		groomer.save
 
 		redirect_to '/dog_groomer'
+	end
+
+	def show
+		@groomer = DogGroomer.find(params[:id])
 	end
 end
