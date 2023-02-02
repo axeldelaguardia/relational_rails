@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 	get '/pets', to: 'pets#index'
 	get '/pets/:id', to: 'pets#show'
 
-	get '/dog_groomers/new', to: 'dog_groomers#new'
-	post '/dog_groomers', to: 'dog_groomers#create'
+	# get '/dog_groomers/new', to: 'dog_groomers#new'
+	# post '/dog_groomers', to: 'dog_groomers#create'
 end
