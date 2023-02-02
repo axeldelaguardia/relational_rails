@@ -1,24 +1,24 @@
 class DogGroomersController < ApplicationController
 	def index
-		@groomers = DogGroomer.all
+		@groomers = DogGroomer.sort
 	end
 
-	def new
+	# def new
 
-	end
+	# end
 
-	def create
-		groomer = DogGroomer.new({
-			name: params[:groomer][:name],
-			master_groomer: params[:groomer][:master_groomer],
-			salon: params[:groomer][:salon],
-			rating: params[:groomer][:rating]
-		})
+	# def create
+	# 	groomer = DogGroomer.new({
+	# 		name: params[:groomer][:name],
+	# 		master_groomer: params[:groomer][:master_groomer],
+	# 		salon: params[:groomer][:salon],
+	# 		rating: params[:groomer][:rating]
+	# 	})
 
-		groomer.save
+	# 	groomer.save
 
-		redirect_to '/dog_groomer'
-	end
+	# 	redirect_to '/dog_groomer'
+	# end
 
 	def show
 		@groomer = DogGroomer.find(params[:id])
