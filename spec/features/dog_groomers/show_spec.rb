@@ -25,6 +25,16 @@ RSpec.describe 'DogGroomers Show Page' do
 
 				expect(page).to have_content("Pets: #{dog_groomer1.pet_count}")
 			end
+
+			it 'I see a link to take me to the pets table' do
+				dog_groomer1 = DogGroomer.create!({name: 'Alexa Pearson', master_groomer: true, salon: 'PetCo', rating: 5})
+				pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+				pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+
+				visit "/dog_groomers/#{dog_groomer1.id}"
+
+				expect(page).to have_link("All #{dog_groomer1.name} Pets", href: "/dog_groomers/#{dog_groomer1.id}/pets")
+			end
 		end
 	end
 end

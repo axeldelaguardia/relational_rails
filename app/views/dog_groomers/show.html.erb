@@ -1,6 +1,9 @@
 <h1><%= @groomer.name %></h1>
 
 <p>Master Groomer: <%= @groomer.master_groomer%></p>
+
+<%= link_to "All #{@groomer.name} Pets", "/dog_groomers/#{@groomer.id}/pets" %>
+
 <p>Salon: <%= @groomer.salon%></p>
 <p>Groomer Rating: <%= @groomer.rating%></p>
 <p>Pets: <%= @groomer.pet_count %></p>
