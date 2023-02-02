@@ -12,4 +12,14 @@ describe DogGroomer do
 			expect(DogGroomer.sort).to eq([dog_groomer1, dog_groomer3, dog_groomer2])
 		end
 	end
+
+	describe '#pet_count' do
+		it 'returns the amount of pets for dog groomer' do
+			dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
+			pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
+
+			expect(dog_groomer1.pet_count).to eq(2)
+		end
+	end
 end
