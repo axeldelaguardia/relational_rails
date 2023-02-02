@@ -11,8 +11,8 @@ describe 'Pets Index Page' do
 
 				expect(page).to have_content(dog.name)
 				expect(page).to have_content("Age: #{dog.age}")
-				expect(page).to have_content("Breed: #{dog.breed}")
 				expect(page).to have_content("Weight: #{dog.weight}")
+				expect(page).to have_content("Trained: #{dog.trained}")
 			end
 		end
 	end
