@@ -18,11 +18,11 @@ RSpec.describe 'DogGroomers Show Page' do
 
 			it 'Shows a count of of pets associated' do
 				dog_groomer1 = DogGroomer.create!({name: 'Alexa Pearson', master_groomer: true, salon: 'PetCo', rating: 5})
-				pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
-				pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
+				pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+				pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
 
 				visit "/dog_groomers/#{dog_groomer1.id}"
-				save_and_open_page
+
 				expect(page).to have_content("Pets: #{dog_groomer1.pet_count}")
 			end
 		end

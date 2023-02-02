@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2023_01_31_220947) do
     t.bigint "dog_groomer_id"
     t.string "name"
     t.integer "age"
-    t.string "breed"
     t.integer "weight"
+    t.boolean "trained"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dog_groomer_id"], name: "index_pets_on_dog_groomer_id"

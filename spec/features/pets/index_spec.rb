@@ -5,7 +5,7 @@ describe 'Pets Index Page' do
 		describe 'when I visit /pets' do
 			it 'I see the name of each pet record with attributes' do
 				dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5)
-				dog = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
+				dog = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
 
 				visit "/pets"
 

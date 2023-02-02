@@ -20,14 +20,10 @@ describe 'DogGroomers Index Page' do
 				dog_groomer3 = DogGroomer.create!(name: 'John Tin', master_groomer: false, salon: 'PetCo', rating: 3, created_at: Time.zone.parse("2021-01-01 12:00:00"))
 
 				visit "/dog_groomers"
-				save_and_open_page
 
-				# How to check if created_at is next to name
 				expect(dog_groomer1.name).to appear_before(dog_groomer3.name)
 				expect(dog_groomer3.name).to appear_before(dog_groomer2.name)
-				# expect(dog_groomer1.created_at).to appear_before(dog_groomer3.name)
-				# expect(dog_groomer3.created_at).to appear_before(dog_groomer2.name)
-				expect(page).to have_content(dog_groomer2.created_at)
+				expect(page).to have_content("Created At: #{dog_groomer2.created_at}")
 			end
 		end
 	end

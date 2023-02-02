@@ -4,8 +4,8 @@ class CreatePets < ActiveRecord::Migration[5.2]
 			t.references :dog_groomer, foreign_key: true
       t.string :name
       t.integer :age
-      t.string :breed
       t.integer :weight
+			t.boolean :trained
 
 			t.timestamps
     end
