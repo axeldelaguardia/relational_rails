@@ -1,0 +1,8 @@
+<h1>Pets</h1>
+
+<% @pets.each do |pet| %>
+	<h3><%= pet.name  %></h3>
+	<p>Age: <%= pet.age %></p>
+	<p>Breed: <%= pet.breed %></p>
+	<p>Weight: <%= pet.weight %></p>
+<% end %>
