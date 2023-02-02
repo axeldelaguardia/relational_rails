@@ -16,8 +16,8 @@ describe DogGroomer do
 	describe '#pet_count' do
 		it 'returns the amount of pets for dog groomer' do
 			dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
-			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
-			pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, breed: 'mix', weight: 14)
+			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+			pet2 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
 
 			expect(dog_groomer1.pet_count).to eq(2)
 		end
