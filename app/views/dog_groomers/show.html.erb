@@ -7,3 +7,5 @@
 <p>Salon: <%= @groomer.salon%></p>
 <p>Groomer Rating: <%= @groomer.rating%></p>
 <p>Pets: <%= @groomer.pet_count %></p>
+
+<%= link_to "Update Dog Groomer", "/dog_groomers/#{@groomer.id}/edit" %>
