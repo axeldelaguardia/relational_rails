@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'DogGroomers Index Page' do
+describe 'DogGroomers New Page' do
 	describe 'As a visitor' do
 		describe 'when I fill out form with attributes' do
 			before do

@@ -43,7 +43,9 @@ RSpec.describe 'DogGroomers Show Page' do
 				it 'When I click link, it takes me to update page' do
 					visit "/dog_groomers/#{@dog_groomer1.id}"
 
-					click 
+					click_on 'Update Dog Groomer'
+
+					expect(page).to have_current_path("/dog_groomers/#{@dog_groomer1.id}/edit")
 				end
 			end
 		end
