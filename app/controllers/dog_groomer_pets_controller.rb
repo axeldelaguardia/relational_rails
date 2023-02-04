@@ -1,7 +1,12 @@
 class DogGroomerPetsController < ApplicationController
 	def index
-		@groomer = DogGroomer.find(params[:id])
-		@pets = @groomer.pets
+		if params[:alpha] == "true"
+			@groomer = DogGroomer.find(params[:id])
+			@pets = Pet.where(dog_groomer_id: params[:id]).order(:name)
+		else
+			@groomer = DogGroomer.find(params[:id])
+			@pets = @groomer.pets
+		end
 	end
 
 	def new

@@ -1,4 +1,8 @@
+<br/>
+<br/>
 <%= link_to "New Pet for #{@groomer.name}", "/dog_groomers/#{@groomer.id}/pets/new" %>
+<%= link_to "Sort Pets", "/dog_groomers/#{@groomer.id}/pets?alpha=true" %>
+
 
 <% @pets.each do |pet| %>
 	<h3><%= pet.name %></h3>

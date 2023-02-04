@@ -6,7 +6,7 @@ describe 'DogGroomer Pets Index' do
 			before do
 				@groomer = DogGroomer.create!(name: 'Alexa Pearson', master_groomer: true, salon: 'LBD', rating: 4)
 				@pet1 = @groomer.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
-				@pet2 = @groomer.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+				@pet2 = @groomer.pets.create!(name: 'Art', age: 9, weight: 14, trained: true)
 			end
 
 			it 'I see each pet associated to groomer' do
@@ -34,6 +34,16 @@ describe 'DogGroomer Pets Index' do
 				click_on 'New Pet'
 
 				expect(page).to have_current_path("/dog_groomers/#{@groomer.id}/pets/new")
+			end
+
+			it 'I see a link and can click a link to sort pets in alphabetical order' do
+				visit "/dog_groomers/#{@groomer.id}/pets"
+
+				expect(page).to have_link('Sort Pets', href: "/dog_groomers/#{@groomer.id}/pets?alpha=true")
+
+				click_on 'Sort Pets'
+
+				expect(@pet2.name).to appear_before(@pet1.name)
 			end
 		end
 	end
