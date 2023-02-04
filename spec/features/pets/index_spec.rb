@@ -26,6 +26,13 @@ describe 'Pets Index Page' do
 				expect(page).to have_content(@dog2.name)
 				expect(page).to_not have_content(@dog3.name)
 			end
+
+			it 'I see a link to update a dog groomer nexet to their info' do
+				visit "/pets"
+
+				expect(page).to have_link("Update", href: "/pets/#{@dog1.id}/edit")
+				expect(page).to have_link("Update", href: "/pets/#{@dog2.id}/edit")
+			end
 		end
 	end
 end
