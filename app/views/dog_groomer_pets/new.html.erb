@@ -1,7 +1,7 @@
 
 <br>
 <br>
-<%= form_with url: "/dog_groomers/#{@groomer.id}/pets", method: :post do |form| %>
+<%= form_with url: "/dog_groomers/#{@groomer.id}/pets", method: :post, local: true do |form| %>
 	<%= form.label :name, "Pet Name: " %>
 	<%= form.text_field :name %>
 	<br>
