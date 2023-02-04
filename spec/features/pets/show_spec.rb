@@ -19,8 +19,16 @@ describe 'Pets Show Page' do
 
 			it 'I see a link to update the pet' do
 				visit "/pets/#{@dog.id}"
+				
+				expect(page).to have_link("Update Pet", href: "/pets/#{@dog.id}/edit")
+			end
 
-				expect(page).to have_link("/pets/#{@dog.id}/edit")
+			it 'when I click the link it takes me to that page' do
+				visit "/pets/#{@dog.id}"
+
+				click_on 'Update Pet'
+
+				expect(current_path).to eq("/pets/#{@dog.id}/edit")
 			end
 		end
 	end
