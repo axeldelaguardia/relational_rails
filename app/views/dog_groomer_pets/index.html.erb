@@ -1,3 +1,5 @@
+<%= link_to "New Pet for #{@groomer.name}", "/dog_groomers/#{@groomer.id}/pets/new" %>
+
 <% @pets.each do |pet| %>
 	<h3><%= pet.name %></h3>
 	<p>Age: <%= pet.age %>
