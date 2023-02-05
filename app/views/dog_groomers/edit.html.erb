@@ -4,7 +4,7 @@
 	<h3>Update dog groomer:</h3>
 	
 	<label for='name' required>Enter a name:</label><br/>
-	<input id='name' type='text' name='groomer[name]' placeholder='Name'/><br/>
+	<input id='name' type='text' name='groomer[name]' value=<%= @groomer.name %> /><br/>
 	<br/>
 	<div>
 		<fieldset style='display: inline-block;'>
@@ -14,14 +14,14 @@
 				<label for='master_groomer'>Yes</label>
 			</div>
 			<div>
-				<input type='radio' id='master_groomer' name='groomer[master_groomer]' value='no' checked>
+				<input type='radio' id='master_groomer' name='groomer[master_groomer]' value='no'>
 				<label for='master_groomer'>No</label>
 			</div>
 		</fieldset>
 	</div>
 	<br/>
 	<label for='salon' required>Salon Name?</label><br/>
-	<input id='salon' type='text' name='groomer[salon]' place='Name of Salon'><br/><br/>
+	<input id='salon' type='text' name='groomer[salon]' value=<%= @groomer.salon %>><br/><br/>
 
 	<div>
 		<fieldset style='display: inline-block;'>
@@ -35,7 +35,7 @@
 				<label for='rating'>2</label>
 			</div>
 			<div>
-				<input type='radio' id='rating' name='groomer[rating]' value='3' checked>
+				<input type='radio' id='rating' name='groomer[rating]' value='3'>
 				<label for='rating'>3</label>
 			</div>
 			<div>
