@@ -37,12 +37,12 @@ describe 'DogGroomers Index Page' do
 				expect(page).to have_current_path("/dog_groomers/new")
 			end
 
-			it 'I see a link to update a dog groomer nexet to their info' do
+			it 'I see a link to update a dog groomer next to their info' do
 				visit "/dog_groomers"
 
-				expect(page).to have_link("Update", href: "/dog_groomers/#{@dog_groomer1.id}/edit")
-				expect(page).to have_link("Update", href: "/dog_groomers/#{@dog_groomer2.id}/edit")
-				expect(page).to have_link("Update", href: "/dog_groomers/#{@dog_groomer3.id}/edit")
+				expect(page).to have_button("Update #{@dog_groomer1.name}")
+				expect(page).to have_button("Update #{@dog_groomer2.name}")
+				expect(page).to have_button("Update #{@dog_groomer3.name}")
 			end
 
 			describe 'delete dog groomer from dog groomers index' do

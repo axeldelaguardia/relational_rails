@@ -1,7 +1,7 @@
 <h1>All Groomers</h1>
-<%= link_to "Sort by Number of Pets", "/dog_groomers?sort_by_amount=true" %><br/>
+<%= link_to "Sort by Number of Pets", "/dog_groomers?sort_by_amount=true" %><br/><br/>
 <a href="/dog_groomers/new">New Dog Groomer</a>
-<br/>
+<br/><br/>
 
 <%= form_with url: "/dog_groomers", method: :get, local: true do |form| %>
 	<%= form.label :search_by, "Search by: " %>
@@ -10,9 +10,9 @@
 <% end %>
 
 <% @groomers.each do |groomer| %>
-	<h3 style='font-weight: bold'><%= groomer.name %></h3>
+	<h3><%= link_to "#{groomer.name}", "/dog_groomers/#{groomer.id}" %></h3>
 	<h5>Pet Count: <%= groomer.pet_count %></h5>
 	<p>Created At: <%= groomer.created_at %></p>
-<%= link_to "Update", "/dog_groomers/#{groomer.id}/edit" %>
+<%= button_to "Update #{groomer.name}", "/dog_groomers/#{groomer.id}/edit" %>
 <%= button_to "Delete #{groomer.name}", "/dog_groomers/#{groomer.id}", method: :delete %>
 <% end %>
