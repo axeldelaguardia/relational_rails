@@ -11,8 +11,8 @@
 
 <% @groomers.each do |groomer| %>
 	<h3><%= link_to "#{groomer.name}", "/dog_groomers/#{groomer.id}" %></h3>
-	<h5>Pet Count: <%= groomer.pet_count %></h5>
+	<p>Pet Count: <%= groomer.pet_count %></p>
 	<p>Created At: <%= groomer.created_at %></p>
-<%= button_to "Update #{groomer.name}", "/dog_groomers/#{groomer.id}/edit" %>
+<%= button_to "Update #{groomer.name}", "/dog_groomers/#{groomer.id}/edit", method: :get %>
 <%= button_to "Delete #{groomer.name}", "/dog_groomers/#{groomer.id}", method: :delete %>
 <% end %>

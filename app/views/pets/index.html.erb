@@ -11,6 +11,6 @@
 	<p>Age: <%= pet.age %></p>
 	<p>Weight: <%= pet.weight %></p>
 	<p>Trained: <%= pet.trained %></p>
-	<%= button_to "Update #{pet.name}", "/pets/#{pet.id}/edit" %>
+	<%= button_to "Update #{pet.name}", "/pets/#{pet.id}/edit", method: :get %>
 	<%= button_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
 <% end %>
