@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	get '/dog_groomers/:id', to: 'dog_groomers#show'
 	get '/dog_groomers/:id/edit', to: 'dog_groomers#edit'
 	patch '/dog_groomers/:id', to: 'dog_groomers#update'
+	delete '/dog_groomers/:id', to: 'dog_groomers#destroy'
 
 	get '/dog_groomers/:id/pets', to: 'dog_groomer_pets#index'
 	get '/dog_groomers/:id/pets/new', to: 'dog_groomer_pets#new'
@@ -17,5 +18,5 @@ Rails.application.routes.draw do
 	get '/pets/:id', to: 'pets#show'
 	get '/pets/:id/edit', to: 'pets#edit'
 	patch '/pets/:id', to: 'pets#update'
-	
+
 end

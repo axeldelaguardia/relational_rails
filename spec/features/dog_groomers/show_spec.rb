@@ -37,15 +37,32 @@ RSpec.describe 'DogGroomers Show Page' do
 				it 'I see a link to update to update a dog groomer and can click on it' do
 					visit "/dog_groomers/#{@dog_groomer1.id}"
 
-					expect(page).to have_link('Update Dog Groomer', href: "/dog_groomers/#{@dog_groomer1.id}/edit")
+					expect(page).to have_button('Update Dog Groomer')
 				end
 
 				it 'When I click link, it takes me to update page' do
 					visit "/dog_groomers/#{@dog_groomer1.id}"
 
-					click_on 'Update Dog Groomer'
+					click_button 'Update Dog Groomer'
 
 					expect(page).to have_current_path("/dog_groomers/#{@dog_groomer1.id}/edit")
+				end
+			end
+
+			describe 'Dog Groomer Delete' do
+				it 'I see a link to delete a dog groomer' do
+					visit "/dog_groomers/#{@dog_groomer1.id}"
+
+					expect(page).to have_button("Delete #{@dog_groomer1.name}")
+				end
+
+				it 'When I click on delete, the dog_groomer and all pets are deleted and I am redirected to dog groomer index' do
+					visit "/dog_groomers/#{@dog_groomer1.id}"
+
+					click_button "Delete #{@dog_groomer1.name}"
+
+					expect(current_path).to eq("/dog_groomers")
+					expect(page).to_not have_content(@dog_groomer1.name)
 				end
 			end
 		end

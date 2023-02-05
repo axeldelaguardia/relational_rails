@@ -1,5 +1,5 @@
 class DogGroomer < ApplicationRecord
-	has_many :pets
+	has_many :pets, :dependent => :destroy
 
 	def self.sort
 		self.order(:created_at)

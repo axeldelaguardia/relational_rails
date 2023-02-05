@@ -40,4 +40,10 @@ class DogGroomersController < ApplicationController
 		groomer.save
 		redirect_to "/dog_groomers/#{groomer.id}"
 	end
+
+	def destroy
+		groomer = DogGroomer.find(params[:id])
+		groomer.destroy
+		redirect_to "/dog_groomers"
+	end
 end
