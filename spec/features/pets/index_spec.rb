@@ -17,6 +17,10 @@ describe 'Pets Index Page' do
 				expect(page).to have_content("Age: #{@dog1.age}")
 				expect(page).to have_content("Weight: #{@dog1.weight}")
 				expect(page).to have_content("Trained: #{@dog1.trained}")
+				expect(page).to have_content(@dog2.name)
+				expect(page).to have_content("Age: #{@dog2.age}")
+				expect(page).to have_content("Weight: #{@dog2.weight}")
+				expect(page).to have_content("Trained: #{@dog2.trained}")
 			end
 
 			it 'I only see trained pets' do

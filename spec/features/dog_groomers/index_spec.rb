@@ -6,7 +6,9 @@ describe 'DogGroomers Index Page' do
 			@dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
 			@dog_groomer2 = DogGroomer.create!(name: 'Rachel Green', master_groomer: false, salon: 'PetCo', rating: 3, created_at: Time.zone.parse("2021-01-02 12:00:00"))
 			@dog_groomer3 = DogGroomer.create!(name: 'John Tin', master_groomer: false, salon: 'PetCo', rating: 3, created_at: Time.zone.parse("2021-01-01 12:00:00"))
-
+			@pet1 = @dog_groomer2.pets.create!(name: 'Koa', age: 6, weight: 14, trained: true)
+			@pet2 = @dog_groomer1.pets.create!(name: 'Taja', age: 13, weight: 7, trained: true)
+			@pet3 = @dog_groomer2.pets.create!(name: 'Milo', age: 8, weight: 16, trained: false)
 		end
 
 		describe 'when I visit /doggroomers' do
@@ -58,6 +60,23 @@ describe 'DogGroomers Index Page' do
 					click_button "Delete #{@dog_groomer1.name}"
 
 					expect(page).to_not have_content(@dog_groomer1.name)
+				end
+			end
+
+			describe 'Sort Dog Groomer by Number of Pets' do
+				it 'I see a link to sort parents by number of pets' do
+					visit "/dog_groomers"
+
+					expect(page).to have_link("Sort by Number of Pets")
+				end
+
+				it 'when i click on the link, I am taken back to index page, where i see them in descending order' do
+					visit "/dog_groomers"
+
+					click_on "Sort by Number of Pets"
+
+					expect(@dog_groomer2.name).to appear_before(@dog_groomer1.name)
+					expect(@dog_groomer1.name).to appear_before(@dog_groomer3.name)
 				end
 			end
 		end

@@ -1,6 +1,10 @@
 class DogGroomersController < ApplicationController
 	def index
-		@groomers = DogGroomer.sort
+		if params[:sort_by_amount] == "true"
+			DogGroomer.left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
+		else
+			@groomers = DogGroomer.sort
+		end
 	end
 
 	def new

@@ -8,4 +8,8 @@ class DogGroomer < ApplicationRecord
 	def pet_count
 		self.pets.count
 	end
+
+	def self.sort_by_amount
+		left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
+	end
 end
