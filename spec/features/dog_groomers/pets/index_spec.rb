@@ -6,7 +6,7 @@ describe 'DogGroomer Pets Index' do
 			before do
 				@groomer = DogGroomer.create!(name: 'Alexa Pearson', master_groomer: true, salon: 'LBD', rating: 4)
 				@pet1 = @groomer.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
-				@pet2 = @groomer.pets.create!(name: 'Art', age: 9, weight: 14, trained: true)
+				@pet2 = @groomer.pets.create!(name: 'Art', age: 9, weight: 56, trained: true)
 			end
 
 			it 'I see each pet associated to groomer' do
@@ -44,6 +44,18 @@ describe 'DogGroomer Pets Index' do
 				click_on 'Sort Pets'
 
 				expect(@pet2.name).to appear_before(@pet1.name)
+			end
+
+			it 'I see a form that allows me to input a number' do
+				visit "/dog_groomers/#{@groomer.id}/pets"
+
+				expect(page).to have_field('dog_weight')
+
+				fill_in 'dog_weight', with: '42'
+				click_button
+
+				expect(page).to have_content(@pet2.name)
+				expect(page).to_not have_content(@pet1.name)
 			end
 		end
 	end
