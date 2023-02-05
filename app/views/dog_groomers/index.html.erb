@@ -5,4 +5,5 @@
 	<h3 style='font-weight: bold'><%= groomer.name %></h3>
 	<p>Created At: <%= groomer.created_at %></p>
 <%= link_to "Update", "/dog_groomers/#{groomer.id}/edit" %>
+<%= button_to "Delete #{groomer.name}", "/dog_groomers/#{groomer.id}", method: :delete %>
 <% end %>
