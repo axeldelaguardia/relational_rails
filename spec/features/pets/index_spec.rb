@@ -33,6 +33,23 @@ describe 'Pets Index Page' do
 				expect(page).to have_link("Update", href: "/pets/#{@dog1.id}/edit")
 				expect(page).to have_link("Update", href: "/pets/#{@dog2.id}/edit")
 			end
+
+			describe 'delete dog groomer from dog groomers index' do
+				it 'I see a link to delete dog groomer, next to each one of them' do
+					visit '/pets'
+					
+					expect(page).to have_button("Delete #{@dog1.name}")
+					expect(page).to have_button("Delete #{@dog2.name}")
+				end
+
+				it 'when i click on the button, i am returned to updated dog groomers index' do
+					visit '/pets'
+
+					click_button "Delete #{@dog1.name}"
+
+					expect(page).to_not have_content(@dog_groomer1.name)
+				end
+			end
 		end
 	end
 end

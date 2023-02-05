@@ -6,4 +6,5 @@
 	<p>Weight: <%= pet.weight %></p>
 	<p>Trained: <%= pet.trained %></p>
 	<%= link_to 'Update', "/pets/#{pet.id}/edit" %>
+	<%= button_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
 <% end %>
