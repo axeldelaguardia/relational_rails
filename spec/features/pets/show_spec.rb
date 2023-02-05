@@ -20,15 +20,27 @@ describe 'Pets Show Page' do
 			it 'I see a link to update the pet' do
 				visit "/pets/#{@dog.id}"
 				
-				expect(page).to have_link("Update Pet", href: "/pets/#{@dog.id}/edit")
+				expect(page).to have_button("Update #{@dog.name}")
 			end
 
-			it 'when I click the link it takes me to that page' do
+			it 'when I click the button it takes me to that page' do
 				visit "/pets/#{@dog.id}"
-
-				click_on 'Update Pet'
+				click_button "Update #{@dog.name}"
 
 				expect(current_path).to eq("/pets/#{@dog.id}/edit")
+			end
+
+			describe 'delete button' do
+				it 'has a button to delete pet record' do
+					visit "/pets/#{@dog.id}"
+
+					expect(page).to have_content(@dog.name)
+
+					click_button "Delete #{@dog.name}"
+
+					expect(current_path).to eq("/pets")
+					expect(page).to_not have_content(@dog.name)
+				end
 			end
 		end
 	end
