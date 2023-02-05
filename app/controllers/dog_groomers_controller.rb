@@ -1,7 +1,9 @@
 class DogGroomersController < ApplicationController
 	def index
 		if params[:sort_by_amount] == "true"
-			DogGroomer.left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
+			@groomers = DogGroomer.left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
+		elsif params[:search_by] != nil
+			@groomers = DogGroomer.find_by(params[:search_by])
 		else
 			@groomers = DogGroomer.sort
 		end

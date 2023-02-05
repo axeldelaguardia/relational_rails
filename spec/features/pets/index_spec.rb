@@ -54,6 +54,25 @@ describe 'Pets Index Page' do
 					expect(page).to_not have_content(@dog_groomer1.name)
 				end
 			end
+
+			describe 'Search by name' do
+				it 'I see a text box to filter results by keyword' do
+					visit "/pets"
+
+					expect(page).to have_field(:search_by)
+					expect(page).to have_button('Filter')
+				end
+
+				it 'I get records returned that only contain the keyword' do
+					visit "/pets"
+
+					fill_in 'search_by', with: 'Koa'
+					click_button "Filter"
+
+					expect(page).to have_content('Koa')
+					expect(page).to_not have_content("Taja")
+				end
+			end
 		end
 	end
 end

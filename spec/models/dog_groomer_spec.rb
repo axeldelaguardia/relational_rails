@@ -35,4 +35,17 @@ describe DogGroomer do
 			expect(DogGroomer.sort_by_amount).to eq([dog_groomer2, dog_groomer1, dog_groomer3])
 		end
 	end
+
+	describe '#find_by' do
+		it 'filters through dog groomers by keyword' do
+			dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			dog_groomer2 = DogGroomer.create!(name: 'Rita M', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			dog_groomer3 = DogGroomer.create!(name: 'Sean', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			pet2 = dog_groomer2.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+			pet3 = dog_groomer2.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+
+			expect(DogGroomer.find_by("Rita")).to eq([dog_groomer2])
+		end
+	end
 end

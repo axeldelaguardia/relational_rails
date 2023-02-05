@@ -1,5 +1,11 @@
 <h1>Pets</h1>
 
+<%= form_with url: "/pets", method: :get, local: true do |form| %>
+	<%= form.label :search_by, "Search by: " %>
+	<%= form.text_field :search_by %>
+	<%= form.submit "Filter" %>
+<% end %>
+
 <% @pets.each do |pet| %>
 	<h3><%= pet.name  %></h3>
 	<p>Age: <%= pet.age %></p>

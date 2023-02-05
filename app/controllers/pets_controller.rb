@@ -1,6 +1,10 @@
 class PetsController < ApplicationController
 	def index
-		@pets = Pet.trained_pets
+		if params[:search_by] != nil
+			@pets = Pet.find_by(params[:search_by])
+		else
+			@pets = Pet.trained_pets
+		end
 	end
 
 	def show

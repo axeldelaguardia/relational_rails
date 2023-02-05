@@ -79,6 +79,25 @@ describe 'DogGroomers Index Page' do
 					expect(@dog_groomer1.name).to appear_before(@dog_groomer3.name)
 				end
 			end
+
+			describe 'Search by name' do
+				it 'I see a text box to filter results by keyword' do
+					visit "/dog_groomers"
+
+					expect(page).to have_field(:search_by)
+					expect(page).to have_button('Filter')
+				end
+
+				it 'I get records returned that only contain the keyword' do
+					visit "/dog_groomers"
+
+					fill_in 'search_by', with: 'John'
+					click_button "Filter"
+
+					expect(page).to have_content('John Tin')
+					expect(page).to_not have_content("Malia")
+				end
+			end
 		end
 	end
 end

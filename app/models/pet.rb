@@ -12,4 +12,8 @@ class Pet < ApplicationRecord
 	def self.of_weight(dog_groomer_id, weight)
 		Pet.where(dog_groomer_id: dog_groomer_id).where("weight > #{weight}")
 	end
+
+	def self.find_by(keyword)
+		where("name ILIKE :search", search: "%#{keyword}%")
+	end
 end
