@@ -4,10 +4,12 @@
 <br/><br/>
 
 <%= form_with url: "/dog_groomers", method: :get, local: true do |form| %>
-	<%= form.label :search_by, "Search by: " %>
-	<%= form.text_field :search_by %>
-	<%= form.submit "Filter" %>
+	<%= form.label :search_by_name, "Search by Name: " %>
+	<%= form.text_field :search_by_name %>
+	<%= form.submit "Sort By Name" %>
 <% end %>
+
+
 
 <% @groomers.each do |groomer| %>
 	<h3><%= link_to "#{groomer.name}", "/dog_groomers/#{groomer.id}" %></h3>

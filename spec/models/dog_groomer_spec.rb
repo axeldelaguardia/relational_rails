@@ -36,7 +36,7 @@ describe DogGroomer do
 		end
 	end
 
-	describe '#find_by' do
+	describe '#find_by_name' do
 		it 'filters through dog groomers by keyword' do
 			dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
 			dog_groomer2 = DogGroomer.create!(name: 'Rita M', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
@@ -45,7 +45,21 @@ describe DogGroomer do
 			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
 			pet3 = dog_groomer2.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
 
-			expect(DogGroomer.find_by("Rita")).to eq([dog_groomer2])
+			expect(DogGroomer.find_by_name("Rita")).to_not eq([dog_groomer2])
+			expect(DogGroomer.find_by_name("Rita M")).to eq([dog_groomer2])
+		end
+	end
+
+	describe '#find_by_keyword' do
+		it 'filters through dog groomers by keyword' do
+			dog_groomer1 = DogGroomer.create!(name: 'Malia Kainoa', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			dog_groomer2 = DogGroomer.create!(name: 'Rita M', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			dog_groomer3 = DogGroomer.create!(name: 'Sean', master_groomer: true, salon: 'LBD', rating: 5, created_at: Time.zone.parse("2021-01-01 12:00:00"))
+			pet2 = dog_groomer2.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+			pet1 = dog_groomer1.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+			pet3 = dog_groomer2.pets.create!(name: 'Koa', age: 9, weight: 14, trained: true)
+
+			expect(DogGroomer.find_by_keyword("Rita")).to eq([dog_groomer2])
 		end
 	end
 end

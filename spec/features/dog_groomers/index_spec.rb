@@ -84,15 +84,15 @@ describe 'DogGroomers Index Page' do
 				it 'I see a text box to filter results by keyword' do
 					visit "/dog_groomers"
 
-					expect(page).to have_field(:search_by)
-					expect(page).to have_button('Filter')
+					expect(page).to have_field(:search_by_name)
+					expect(page).to have_button('Sort By Name')
 				end
 
-				it 'I get records returned that only contain the keyword' do
+				it 'I get records returned that only contain the name' do
 					visit "/dog_groomers"
 
-					fill_in 'search_by', with: 'John'
-					click_button "Filter"
+					fill_in 'search_by_name', with: 'John Tin'
+					click_button "Sort By Name"
 
 					expect(page).to have_content('John Tin')
 					expect(page).to_not have_content("Malia")
@@ -101,3 +101,10 @@ describe 'DogGroomers Index Page' do
 		end
 	end
 end
+
+
+# <%= form_with url: "/dog_groomers", method: :get, local: true do |form| %>
+# 	<%= form.label :search_by_keyword, "Search by Keyword: " %>
+# 	<%= form.text_field :search_by %>
+# 	<%= form.submit "Sort By Keyword" %>
+# <% end %>

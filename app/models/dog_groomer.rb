@@ -13,7 +13,11 @@ class DogGroomer < ApplicationRecord
 		left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
 	end
 
-	def self.find_by(keyword)
+	def self.find_by_name(name)
+		where(name: name)
+	end
+
+	def self.find_by_keyword(keyword)
 		where("name ILIKE :search OR salon ILIKE :search", search: "%#{keyword}%")
 	end
 end
