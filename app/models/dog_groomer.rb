@@ -14,6 +14,7 @@ class DogGroomer < ApplicationRecord
 	end
 
 	def self.find_by_name(name)
+		# require 'pry'; binding.pry
 		where(name: name)
 	end
 

@@ -3,9 +3,10 @@ class DogGroomersController < ApplicationController
 		if params[:sort_by_amount] == "true"
 			@groomers = DogGroomer.left_joins(:pets).group(:id).order("COUNT(pets.id) DESC")
 		elsif params[:search_by_name] != nil
-			@groomers = DogGroomer.find_by_name(params[:search_by])
+			# require 'pry'; binding.pry
+			@groomers = DogGroomer.find_by_name(params[:search_by_name])
 		elsif params[:search_by_keyword] != nil
-			@groomers = DogGroomer.find_by_keyword(params[:search_by])
+			@groomers = DogGroomer.find_by_keyword(params[:search_by_keyword])
 		else
 			@groomers = DogGroomer.sort
 		end

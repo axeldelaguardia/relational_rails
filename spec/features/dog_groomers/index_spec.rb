@@ -85,17 +85,27 @@ describe 'DogGroomers Index Page' do
 					visit "/dog_groomers"
 
 					expect(page).to have_field(:search_by_name)
-					expect(page).to have_button('Sort By Name')
+					expect(page).to have_button('Search by Name')
 				end
 
 				it 'I get records returned that only contain the name' do
 					visit "/dog_groomers"
 
 					fill_in 'search_by_name', with: 'John Tin'
-					click_button "Sort By Name"
+					click_button "Search by Name"
 
 					expect(page).to have_content('John Tin')
 					expect(page).to_not have_content("Malia")
+				end
+
+				it 'I get records returned that contain a keyword' do
+					visit '/dog_groomers'
+
+					fill_in 'search_by_keyword', with: "Rachel"
+					click_button 'Search by Keyword'
+
+					expect(page).to have_content('Rachel Green')
+					expect(page).to_not have_content('Malia')
 				end
 			end
 		end
@@ -103,8 +113,3 @@ describe 'DogGroomers Index Page' do
 end
 
 
-# <%= form_with url: "/dog_groomers", method: :get, local: true do |form| %>
-# 	<%= form.label :search_by_keyword, "Search by Keyword: " %>
-# 	<%= form.text_field :search_by %>
-# 	<%= form.submit "Sort By Keyword" %>
-# <% end %>
