@@ -1,24 +1,23 @@
 # README
+## Dog Groomers and Pets
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Ruby version
+2.7.4
 
-Things you may want to cover:
+### System dependencies
 
-* Ruby version
+### Configuration
 
-* System dependencies
+### Database creation
+Two tables in the DB.
+Dog Groomers {name: string, master_groomer: boolean, salon: string, rating: integer}
+Pets {name: string, age: integer, weight: integer, trained: boolean}
 
-* Configuration
+### Database initialization
 
-* Database creation
+### How to run the test suite
+To run the test suite, you run: bundle exec rspec.
 
-* Database initialization
+### Services (job queues, cache servers, search engines, etc.)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Deployment instructions
