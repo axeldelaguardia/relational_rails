@@ -1,0 +1,27 @@
+
+<br>
+<br>
+<%= form_with url: "/pets/#{@pet.id}", method: :patch, local: true do |form| %>
+	<%= form.label :name, "Pet Name: " %>
+	<%= form.text_field :name, value: "#{@pet.name}"%>
+	<br>
+	<br>
+	<%= form.label :age, "Age: " %>
+	<%= form.text_field :age, value: "#{@pet.age}"%>
+	<br>
+	<br>
+	<%= form.label :weight, "Weight: " %>
+	<%= form.text_field :weight, value: "#{@pet.weight}"%>
+	<br>
+	<br>
+	<fieldset style='display: inline-block;'>
+		<legend>Trained?</legend>
+		<%= form.radio_button :trained, true%>
+		<%= form.label :trained_true, "Yes" %>
+		<%= form.radio_button :trained, false %>
+		<%= form.label :trained_false, "No" %>
+	</fieldset>
+	<br>
+	<br>
+	<%= form.submit "Update Pet" %>
+<% end %>

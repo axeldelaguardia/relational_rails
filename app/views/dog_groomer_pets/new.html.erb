@@ -1,0 +1,28 @@
+
+<br>
+<br>
+<%= form_with url: "/dog_groomers/#{@groomer.id}/pets", method: :post, local: true do |form| %>
+	<%= form.label :name, "Pet Name: " %>
+	<%= form.text_field :name %>
+	<br>
+	<br>
+	<%= form.label :age, "Age: " %>
+	<%= form.text_field :age %>
+	<br>
+	<br>
+	<%= form.label :weight, "Weight: " %>
+	<%= form.text_field :weight %>
+	<br>
+	<br>
+	<fieldset style='display: inline-block;'>
+		<legend>Trained?</legend>
+		<%= form.radio_button :trained, true %>
+		<%= form.label :trained_true, "Yes" %>
+		<%= form.radio_button :trained, false %>
+		<%= form.label :trained_false, "No" %>
+	</fieldset>
+	<br>
+	<br>
+	<%= form.hidden_field :dog_groomer_id, value: "#{@groomer.id}" %>
+	<%= form.submit "Add New Pet" %>
+<% end %>

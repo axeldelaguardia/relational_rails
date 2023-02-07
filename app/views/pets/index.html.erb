@@ -1,0 +1,16 @@
+<h1>Pets</h1>
+
+<%= form_with url: "/pets", method: :get, local: true do |form| %>
+	<%= form.label :search_by, "Search by: " %>
+	<%= form.text_field :search_by %>
+	<%= form.submit "Filter" %>
+<% end %>
+
+<% @pets.each do |pet| %>
+	<h3><%= link_to "#{pet.name}", "/pets/#{pet.id}"  %></h3>
+	<p>Age: <%= pet.age %></p>
+	<p>Weight: <%= pet.weight %></p>
+	<p>Trained: <%= pet.trained %></p>
+	<%= button_to "Update #{pet.name}", "/pets/#{pet.id}/edit", method: :get %>
+	<%= button_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
+<% end %>
