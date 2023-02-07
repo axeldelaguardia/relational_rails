@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'DogGroomers New Page' do
 	describe 'As a visitor' do
 		describe 'when I fill out form with attributes' do
+			
 			before do
 				visit "/dog_groomers/new"
 				fill_in 'name', with: 'New Person'

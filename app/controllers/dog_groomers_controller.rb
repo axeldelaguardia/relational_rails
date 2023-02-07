@@ -39,13 +39,7 @@ class DogGroomersController < ApplicationController
 
 	def update
 		groomer = DogGroomer.find(params[:id])
-		groomer.update({
-			name: params[:groomer][:name],
-			master_groomer: params[:groomer][:master_groomer],
-			salon: params[:groomer][:salon],
-			rating: params[:groomer][:rating]
-		})
-
+		groomer.update(dog_groomers_params)
 		groomer.save
 		redirect_to "/dog_groomers/#{groomer.id}"
 	end
@@ -54,5 +48,10 @@ class DogGroomersController < ApplicationController
 		groomer = DogGroomer.find(params[:id])
 		groomer.destroy
 		redirect_to "/dog_groomers"
+	end
+
+	private
+	def dog_groomers_params
+		params[:groomer].permit(:name, :master_groomer, :salon, :rating)
 	end
 end
