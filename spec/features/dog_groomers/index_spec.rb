@@ -80,7 +80,7 @@ describe 'DogGroomers Index Page' do
 				end
 			end
 
-			describe 'Search by name' do
+			describe '::search_by_name' do
 				it 'I see a text box to filter results by keyword' do
 					visit "/dog_groomers"
 
